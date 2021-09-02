@@ -171,10 +171,12 @@ begin
      cbb1.Enabled := False;
      Video.VideoStart(cbb1.Items[cbb1.ItemIndex]);
      btn2.Caption := 'Stop';
+     chk1.Enabled := False;
   end else begin
      Video.VideoStop;
      cbb1.Enabled := True;
      btn2.Caption := 'Start';
+     chk1.Enabled := True;
   end;
   
 end;

@@ -21,6 +21,8 @@ type
     chk1: TCheckBox;
     lbl4: TLabel;
     tmrGetKey: TTimer;
+    lbl5: TLabel;
+    cbb2: TComboBox;
     procedure OnNewVideoFrame(Sender: TObject; Width, Height: integer; DataPtr: Pointer);
     procedure shp1MouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
@@ -40,6 +42,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure trckbr1Change(Sender: TObject);
     procedure btn2Click(Sender: TObject);
+    procedure cbb2Change(Sender: TObject);
   private
       FMouseDownPos, FLastPosition :TPoint;
       FDragEnabled:Boolean;
@@ -147,6 +150,7 @@ begin
 
   for i := 0 to StringList.Count-1 do cbb1.items.Add(StringList.Strings[i]);
   cbb1.ItemIndex := 0;
+
 end;
 
 procedure TForm1.OnNewVideoFrame(Sender: TObject; Width, Height: integer; DataPtr: Pointer);
@@ -166,19 +170,36 @@ begin
 end;
 
 procedure TForm1.btn2Click(Sender: TObject);
+var
+  reslist: TStringList;
 begin
+
+
   if btn2.Caption = 'Start' then begin
      cbb1.Enabled := False;
      Video.VideoStart(cbb1.Items[cbb1.ItemIndex]);
      btn2.Caption := 'Stop';
      chk1.Enabled := False;
+     reslist :=TStringList.Create;
+
+     Video.GetListOfSupportedVideoSizes(reslist);
+     cbb2.Items := reslist;
+     cbb2.ItemIndex := 0;
   end else begin
      Video.VideoStop;
      cbb1.Enabled := True;
      btn2.Caption := 'Start';
      chk1.Enabled := True;
+     cbb2.Clear;
   end;
-  
+
+end;
+
+
+
+procedure TForm1.cbb2Change(Sender: TObject);
+begin
+Video.SetResolutionByIndex(cbb2.ItemIndex);
 end;
 
 end.

@@ -1,8 +1,8 @@
 object Form1: TForm1
-  Left = 240
-  Top = 142
-  Width = 370
-  Height = 248
+  Left = 219
+  Top = 130
+  Width = 389
+  Height = 263
   Caption = 'WebCamView'
   Color = 4210752
   Font.Charset = DEFAULT_CHARSET
@@ -11,25 +11,26 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = False
+  Position = poScreenCenter
   OnShow = FormShow
   DesignSize = (
-    354
-    210)
+    373
+    225)
   PixelsPerInch = 96
   TextHeight = 13
   object img1: TImage
     Left = 0
     Top = 0
-    Width = 353
-    Height = 209
+    Width = 372
+    Height = 224
     Anchors = [akLeft, akTop, akRight, akBottom]
     Stretch = True
   end
   object lbl4: TLabel
     Left = 0
     Top = 0
-    Width = 353
-    Height = 209
+    Width = 372
+    Height = 224
     Alignment = taCenter
     Anchors = [akLeft, akTop, akRight, akBottom]
     AutoSize = False
@@ -46,7 +47,7 @@ object Form1: TForm1
     Left = 8
     Top = 8
     Width = 265
-    Height = 169
+    Height = 209
     Color = 6118749
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWhite
@@ -100,6 +101,13 @@ object Form1: TForm1
       Height = 13
       Caption = 'FPS: 60'
     end
+    object lbl5: TLabel
+      Left = 8
+      Top = 104
+      Width = 52
+      Height = 13
+      Caption = 'Video Size:'
+    end
     object cbb1: TComboBox
       Left = 8
       Top = 40
@@ -124,7 +132,7 @@ object Form1: TForm1
     end
     object btn2: TButton
       Left = 8
-      Top = 112
+      Top = 144
       Width = 249
       Height = 25
       Caption = 'Start'
@@ -133,12 +141,22 @@ object Form1: TForm1
     end
     object chk1: TCheckBox
       Left = 8
-      Top = 144
+      Top = 176
       Width = 97
       Height = 17
       Caption = 'TopMost'
       TabOrder = 3
       OnClick = chk1Click
+    end
+    object cbb2: TComboBox
+      Left = 8
+      Top = 120
+      Width = 249
+      Height = 21
+      Color = 6118749
+      ItemHeight = 13
+      TabOrder = 4
+      OnChange = cbb2Change
     end
   end
   object tmrGetKey: TTimer
